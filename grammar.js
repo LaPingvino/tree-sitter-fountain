@@ -65,8 +65,10 @@ module.exports = grammar({
 
     synope: $ => /=.+\n/,
 
+    section_id: $ => /.*\n/,
     section: $ => prec.left(seq(
-      /#{1,}.+\n/,
+      /#{1,}/,
+      field("name", $.section_id),
       repeat(
         choice($.scene, $._element)
       )

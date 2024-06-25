@@ -3,21 +3,34 @@
 [
  (action)
  (speech)
+ (synope)
+ (parenthetical)
+ (note)
 ] @spell
 
-(character)@keyword
-(parenthetical)@markup.italic
+[
+(boneyard)
+(section)
+(scene)
+] @nospell
+
+(action)@variable
+
+(character)@markup.underline @type
+(parenthetical)@markup.italic @comment
+(speech)@string
 
 (transition)@comment.todo
 
 (break)@type
 
-(section) @markup.heading.1
-(scene) @markup.heading.2
-(synope) @markup.heading.3
+(section) @markup.heading.1 @keyword
+(scene) @markup.heading.2 @module.builtin
+(synope) @markup.heading.3 @constant
 
 [
  (note)
  (boneyard)
 ] @comment
+(boneyard)@markup.strikethrough
 
