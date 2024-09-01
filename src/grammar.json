@@ -192,46 +192,9 @@
       "type": "PATTERN",
       "value": "=.+\\n"
     },
-    "section_id": {
-      "type": "PATTERN",
-      "value": ".*\\n"
-    },
     "section": {
-      "type": "PREC_LEFT",
-      "value": 0,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "PATTERN",
-            "value": "#{1,}"
-          },
-          {
-            "type": "FIELD",
-            "name": "name",
-            "content": {
-              "type": "SYMBOL",
-              "name": "section_id"
-            }
-          },
-          {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "scene"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_element"
-                }
-              ]
-            }
-          }
-        ]
-      }
+      "type": "PATTERN",
+      "value": "#+.*\\n"
     },
     "note": {
       "type": "PATTERN",

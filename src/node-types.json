@@ -151,61 +151,6 @@
     }
   },
   {
-    "type": "section",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "section_id",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "action",
-          "named": true
-        },
-        {
-          "type": "break",
-          "named": true
-        },
-        {
-          "type": "dialogue",
-          "named": true
-        },
-        {
-          "type": "note",
-          "named": true
-        },
-        {
-          "type": "scene",
-          "named": true
-        },
-        {
-          "type": "synope",
-          "named": true
-        },
-        {
-          "type": "transition",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "section_id",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "speech",
     "named": true,
     "fields": {}
@@ -230,6 +175,10 @@
   },
   {
     "type": "note",
+    "named": true
+  },
+  {
+    "type": "section",
     "named": true
   },
   {
