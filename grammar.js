@@ -5,84 +5,85 @@ module.exports = grammar({
   name: "fountain",
 
   rules: {
-    document: $ => seq(
-      optional($.title_page),
-      repeat(choice($.boneyard, $.section, $.scene, $._element)),
-    ),
+    document: ($) =>
+      seq(
+        optional($.title_page),
+        repeat(choice($.boneyard, $.section, $.scene, $._element)),
+      ),
 
     // Title Page
-    title_page: $ => repeat1(
-      $._title_element
-    ),
+    title_page: ($) => repeat1($._title_element),
 
-    _title_element: $ =>
-      /[\w ]+:.*((\n\t+|\n[ ]{2,}).*)*/,
+    _title_element: ($) => /[\w ]+:.*((\n\t+|\n[ ]{2,}).*)*/,
 
     // Scene
 
-    scene: $ => prec.right(seq(
-      choice(
-        /(INT|EXT|EST|INT.?\/EXT|I.?\/E).?.*\n\n/,
-        /\..+\n\n/
+    scene: ($) =>
+      prec.right(
+        seq(
+          choice(/(INT|EXT|EST|INT.?\/EXT|I.?\/E).?.*\n\n/, /\..+\n\n/),
+          repeat1($._element),
+        ),
       ),
-      repeat1($._element)
-    )),
 
     // Dialogue
-    dialogue: $ => prec.right(repeat1(
-      $.dialogue_block
-    )),
+    dialogue: ($) => prec.right(repeat1($.dialogue_block)),
 
-    dialogue_block: $ => (seq(
-      field('character', $.character),
-      repeat1(choice($.speech, $.parenthetical)),
-      '\n'
-    )),
-
-    character: $ => seq(
-      /([A-Z. ]+|@.+)[ ]*(\(.+\))?\^?\n/,
-    ),
-
-    parenthetical: $ => prec(2, /\(.*\)\n/),
-    speech: $ => prec(1, /.*\n/),
-
-
-    // misc.
-    action: $ => prec(-1,
-      repeat1(choice(
-        /!.+/,
-        $._line
-      ))
-    ),
-
-    transition: $ =>
-      choice(
-        /[A-Z ]+ TO:\n\n/,
-        />.+[^<]\n\n/
+    dialogue_block: ($) =>
+      seq(
+        field("character", $.character),
+        repeat1(choice($.speech, $.parenthetical)),
+        "\n",
       ),
 
-    break: $ => /={3,}\n/,
+    character: ($) => /([A-Z. ]+|@.+)[ ]*(\(.+\))?\^?\n/,
 
-    synope: $ => /=.+\n/,
+    parenthetical: ($) => prec(2, /\(.*\)\n/),
+    speech: ($) => prec(1, /.*\n/),
 
-    section: $ => /#+.*\n/,
+    // misc.
+    action: ($) => prec(-1, repeat1(choice(/!.+/, $._line))),
 
-    note: $ => /\[\[.+\]\]\n/,
+    transition: ($) => choice(/[A-Z ]+ TO:\n\n/, />.+[^<]\n\n/),
 
-    boneyard: $ => prec(10,
-      /\/\*(.|\n)*\*\//
-    ),
+    break: ($) => /={3,}\n/,
 
-    _line: $ => /[^\n]+/,
+    synope: ($) => /=.+\n/,
 
-    _element: $ => prec.left(choice(
-      $.action,
-      $.dialogue,
-      $.transition,
-      $.synope,
-      $.break,
-      $.note
-    ))
+    section1: ($) =>
+      prec.right(
+        seq(
+          /#[^#].*\n/,
+          repeat(
+            choice($.boneyard, $.section2, $.section3, $.scene, $._element),
+          ),
+        ),
+      ),
 
-  }
+    section2: ($) =>
+      prec.right(
+        seq(
+          /##[^#].*\n/,
+          repeat(choice($.boneyard, $.section3, $.scene, $._element)),
+        ),
+      ),
+
+    section3: ($) =>
+      prec.right(
+        seq(/###[^#].*\n/, repeat(choice($.boneyard, $.scene, $._element))),
+      ),
+
+    section: ($) => choice($.section1, $.section2, $.section3),
+
+    note: ($) => /\[\[.+\]\]\n/,
+
+    boneyard: ($) => prec(10, /\/\*(.|\n)*\*\//),
+
+    _line: ($) => /[^\n]+/,
+
+    _element: ($) =>
+      prec.left(
+        choice($.action, $.dialogue, $.transition, $.synope, $.break, $.note),
+      ),
+  },
 });

@@ -127,13 +127,8 @@
       ]
     },
     "character": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "([A-Z. ]+|@.+)[ ]*(\\(.+\\))?\\^?\\n"
-        }
-      ]
+      "type": "PATTERN",
+      "value": "([A-Z. ]+|@.+)[ ]*(\\(.+\\))?\\^?\\n"
     },
     "parenthetical": {
       "type": "PREC",
@@ -192,9 +187,133 @@
       "type": "PATTERN",
       "value": "=.+\\n"
     },
+    "section1": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "#[^#].*\\n"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "boneyard"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "section2"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "section3"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "scene"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_element"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "section2": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "##[^#].*\\n"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "boneyard"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "section3"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "scene"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_element"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "section3": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "###[^#].*\\n"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "boneyard"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "scene"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_element"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "section": {
-      "type": "PATTERN",
-      "value": "#+.*\\n"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "section1"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section2"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "section3"
+        }
+      ]
     },
     "note": {
       "type": "PATTERN",

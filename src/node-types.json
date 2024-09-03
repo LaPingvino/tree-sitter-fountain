@@ -10,11 +10,6 @@
     "fields": {}
   },
   {
-    "type": "character",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "dialogue",
     "named": true,
     "fields": {},
@@ -151,6 +146,170 @@
     }
   },
   {
+    "type": "section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "section1",
+          "named": true
+        },
+        {
+          "type": "section2",
+          "named": true
+        },
+        {
+          "type": "section3",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section1",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "action",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "break",
+          "named": true
+        },
+        {
+          "type": "dialogue",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "scene",
+          "named": true
+        },
+        {
+          "type": "section2",
+          "named": true
+        },
+        {
+          "type": "section3",
+          "named": true
+        },
+        {
+          "type": "synope",
+          "named": true
+        },
+        {
+          "type": "transition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section2",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "action",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "break",
+          "named": true
+        },
+        {
+          "type": "dialogue",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "scene",
+          "named": true
+        },
+        {
+          "type": "section3",
+          "named": true
+        },
+        {
+          "type": "synope",
+          "named": true
+        },
+        {
+          "type": "transition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section3",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "action",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "break",
+          "named": true
+        },
+        {
+          "type": "dialogue",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "scene",
+          "named": true
+        },
+        {
+          "type": "synope",
+          "named": true
+        },
+        {
+          "type": "transition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "speech",
     "named": true,
     "fields": {}
@@ -174,11 +333,11 @@
     "named": true
   },
   {
-    "type": "note",
+    "type": "character",
     "named": true
   },
   {
-    "type": "section",
+    "type": "note",
     "named": true
   },
   {
