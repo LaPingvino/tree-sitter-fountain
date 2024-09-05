@@ -21,7 +21,7 @@ module.exports = grammar({
     scene: ($) =>
       prec.right(
         seq(
-          choice(/(INT|EXT|EST|INT.?\/EXT|I.?\/E).?.*\n\n/, /\..+\n\n/),
+          choice(/(INT|EXT|EST|INT.?\/EXT|I.?\/E).?.[^.]*\n\n/, /\..+\n\n/),
           repeat1($._element),
         ),
       ),
@@ -30,19 +30,23 @@ module.exports = grammar({
     dialogue: ($) => prec.right(repeat1($.dialogue_block)),
 
     dialogue_block: ($) =>
-      seq(
-        field("character", $.character),
-        repeat1(choice($.speech, $.parenthetical)),
-        "\n",
+      prec.right(
+        seq(
+          field("character", $.character),
+          repeat1(choice($.speech, $.parenthetical)),
+          "\n",
+        ),
       ),
 
-    character: ($) => /([A-Z. ]+|@.+)[ ]*(\(.+\))?\^?\n/,
+    _noncharacter: ($) => prec(3, /[A-Z. ']+\n\n/),
+
+    character: ($) => /([A-Z. ']+|@.+)[ ]*(\(.+\))?\^?\n/,
 
     parenthetical: ($) => prec(2, /\(.*\)\n/),
-    speech: ($) => prec(1, /.*\n/),
+    speech: ($) => choice(prec(1, /.+\n/)),
 
     // misc.
-    action: ($) => prec(-1, repeat1(choice(/!.+/, $._line))),
+    action: ($) => prec(-1, repeat1(choice(/!.+/, $._line, $._noncharacter))),
 
     transition: ($) => choice(/[A-Z ]+ TO:\n\n/, />.+[^<]\n\n/),
 
