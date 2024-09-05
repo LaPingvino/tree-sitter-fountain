@@ -40,7 +40,7 @@ module.exports = grammar({
 
     _noncharacter: ($) => prec(3, /[A-Z. ']+\n\n/),
 
-    character: ($) => /([A-Z. ']+|@.+)[ ]*(\(.+\))?\^?\n/,
+    character: ($) => /([\p{Lu}. '#0-9]+|@.+)[ ]*(\(.+\))?\^?\n/u,
 
     parenthetical: ($) => prec(2, /\(.*\)\n/),
     speech: ($) => choice(prec(1, /.+\n/)),

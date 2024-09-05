@@ -140,7 +140,8 @@
     },
     "character": {
       "type": "PATTERN",
-      "value": "([A-Z. ']+|@.+)[ ]*(\\(.+\\))?\\^?\\n"
+      "value": "([\\p{Lu}. '#0-9]+|@.+)[ ]*(\\(.+\\))?\\^?\\n",
+      "flags": "u"
     },
     "parenthetical": {
       "type": "PREC",
