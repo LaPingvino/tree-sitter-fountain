@@ -48,7 +48,7 @@ module.exports = grammar({
 
     break: ($) => /={3,}\n/,
 
-    synope: ($) => /=.+\n/,
+    synopse: ($) => /=.+\n/,
 
     section1: ($) =>
       prec.right(
@@ -83,7 +83,7 @@ module.exports = grammar({
 
     _element: ($) =>
       prec.left(
-        choice($.action, $.dialogue, $.transition, $.synope, $.break, $.note),
+        choice($.action, $.dialogue, $.transition, $.synopse, $.break, $.note),
       ),
   },
 });

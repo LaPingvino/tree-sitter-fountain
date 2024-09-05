@@ -183,7 +183,7 @@
       "type": "PATTERN",
       "value": "={3,}\\n"
     },
-    "synope": {
+    "synopse": {
       "type": "PATTERN",
       "value": "=.+\\n"
     },
@@ -351,7 +351,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "synope"
+            "name": "synopse"
           },
           {
             "type": "SYMBOL",

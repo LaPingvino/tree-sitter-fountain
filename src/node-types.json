@@ -91,7 +91,7 @@
           "named": true
         },
         {
-          "type": "synope",
+          "type": "synopse",
           "named": true
         },
         {
@@ -135,7 +135,7 @@
           "named": true
         },
         {
-          "type": "synope",
+          "type": "synopse",
           "named": true
         },
         {
@@ -209,7 +209,7 @@
           "named": true
         },
         {
-          "type": "synope",
+          "type": "synopse",
           "named": true
         },
         {
@@ -256,7 +256,7 @@
           "named": true
         },
         {
-          "type": "synope",
+          "type": "synopse",
           "named": true
         },
         {
@@ -299,7 +299,7 @@
           "named": true
         },
         {
-          "type": "synope",
+          "type": "synopse",
           "named": true
         },
         {
@@ -341,7 +341,7 @@
     "named": true
   },
   {
-    "type": "synope",
+    "type": "synopse",
     "named": true
   }
 ]
