@@ -6,12 +6,10 @@
       "camelcase": "Fountain",
       "title": "Fountain",
       "scope": "source.fountain",
-      "file-types": [
-        "fountain",
-        "spmd"
-      ],
+      "file-types": ["fountain", "spmd"],
       "injection-regex": "^fountain$",
-      "class-name": "TreeSitterFountain"
+      "class-name": "TreeSitterFountain",
+      "abi-version": 15
     }
   ],
   "metadata": {
