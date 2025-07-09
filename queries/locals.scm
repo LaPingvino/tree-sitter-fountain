@@ -2,5 +2,5 @@
  (section)
  (scene)
  (dialogue)
- ]@local.scop
+ ]@local.scope
 (character)@local.definition

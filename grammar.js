@@ -30,17 +30,16 @@ module.exports = grammar({
     dialogue: ($) => prec.right(repeat1($.dialogue_block)),
 
     dialogue_block: ($) =>
-      prec.right(
-        seq(
-          field("character", $.character),
-          repeat1(choice($.speech, $.parenthetical)),
-          "\n",
-        ),
+      seq(
+        field("character", $.character),
+        repeat(choice($.speech, $.parenthetical)),
+        "\n",
       ),
 
     _noncharacter: ($) => prec(3, /[A-Z. ']+\n\n/),
 
-    character: ($) => /([\p{Lu}. '0-9][\p{Lu}. '#0-9]+|@.+)[ ]*(\(.+\))?\^?\n/u,
+    character: ($) =>
+      /\s*([\p{Lu}. '0-9][\p{Lu}. '#0-9]+|@.+)[ ]*(\(.+\))?\^?\n/u,
 
     parenthetical: ($) => prec(2, /\(.*\)\n/),
     speech: ($) => choice(prec(1, /.+\n/)),

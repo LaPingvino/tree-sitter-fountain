@@ -44,12 +44,8 @@ NARRATOR (o.s contd)
 
 (document
   (scene
-    (action)
-    (transition))
-  (scene
     (action))
   (scene
-    (action)
     (dialogue
       (dialogue_block
         (character)
@@ -64,5 +60,4 @@ NARRATOR (o.s contd)
         (speech)))
     (transition))
   (scene
-    (action))
-)
+    (action)))
