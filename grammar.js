@@ -14,14 +14,17 @@ module.exports = grammar({
     // Title Page
     title_page: ($) => repeat1($._title_element),
 
-    _title_element: ($) => /[\w ]+:.*((\n\t+|\n[ ]{2,}).*)*/,
+    _title_element: ($) => /[\p{L}\p{N}_ ]+:.*((\n\t+|\n[ ]{2,}).*)*/u,
 
     // Scene
 
     scene: ($) =>
       prec.right(
         seq(
-          choice(/(INT|EXT|EST|INT.?\/EXT|I.?\/E).?.[^.]*\n\n/, /\..+\n\n/),
+          choice(
+            /(INT|EXT|EST|INT.?\/EXT|I.?\/E).?.[^.]*\n\n/,
+            /\.[\p{L}\p{N}].+\n\n/u,
+          ),
           repeat1($._element),
         ),
       ),
@@ -36,7 +39,7 @@ module.exports = grammar({
         "\n",
       ),
 
-    _noncharacter: ($) => prec(3, /[A-Z. ']+\n\n/),
+    _noncharacter: ($) => prec(3, /[\p{Lu}. ']+\n\n/u),
 
     character: ($) =>
       /\s*([\p{Lu}. '0-9][\p{Lu}. '#0-9]+|@.+)[ ]*(\(.+\))?\^?\n/u,
@@ -47,7 +50,7 @@ module.exports = grammar({
     // misc.
     action: ($) => prec(-1, repeat1(choice(/!.+/, $._line, $._noncharacter))),
 
-    transition: ($) => choice(/[A-Z ]+ TO:\n\n/, />.+[^<]\n\n/),
+    transition: ($) => choice(/[\p{Lu} ]+ TO:\n\n/u, />.+[^<]\n\n/),
 
     break: ($) => /={3,}\n/,
 

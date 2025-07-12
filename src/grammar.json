@@ -52,7 +52,8 @@
     },
     "_title_element": {
       "type": "PATTERN",
-      "value": "[\\w ]+:.*((\\n\\t+|\\n[ ]{2,}).*)*"
+      "value": "[\\p{L}\\p{N}_ ]+:.*((\\n\\t+|\\n[ ]{2,}).*)*",
+      "flags": "u"
     },
     "scene": {
       "type": "PREC_RIGHT",
@@ -69,7 +70,8 @@
               },
               {
                 "type": "PATTERN",
-                "value": "\\..+\\n\\n"
+                "value": "\\.[\\p{L}\\p{N}].+\\n\\n",
+                "flags": "u"
               }
             ]
           },
@@ -132,7 +134,8 @@
       "value": 3,
       "content": {
         "type": "PATTERN",
-        "value": "[A-Z. ']+\\n\\n"
+        "value": "[\\p{Lu}. ']+\\n\\n",
+        "flags": "u"
       }
     },
     "character": {
@@ -190,7 +193,8 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[A-Z ]+ TO:\\n\\n"
+          "value": "[\\p{Lu} ]+ TO:\\n\\n",
+          "flags": "u"
         },
         {
           "type": "PATTERN",
