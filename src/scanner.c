@@ -57,7 +57,7 @@ enum TokenType {
 };
 
 #define MAX_DEPTH 64
-#define LINE_MAX 1024
+#define LINE_LENGTH 1024
 
 typedef struct {
   bool prev_blank;      // the previous line was blank (or this is the start)
@@ -73,7 +73,7 @@ typedef struct {
 
 // The line being looked at, with what the checks need.
 typedef struct {
-  int32_t text[LINE_MAX]; // the line without its leading whitespace
+  int32_t text[LINE_LENGTH]; // the line without its leading whitespace
   uint32_t len;
   bool truncated;
   bool raw_bang;  // the line itself (not trimmed) starts with !
@@ -190,8 +190,9 @@ static const char *SCENE_PREFIXES[] = {
 };
 
 // Lexington's scene heading prefixes for other languages (its rules
-// package), in capitals only: "Open the door." is action, "OPEN. PLEIN"
-// a Dutch scene heading.
+// package), in capitals only, and a bare word in Latin letters only with
+// a dot after it: "OPEN ON A BLACK SCREEN" is no heading, "OPEN. PLEIN"
+// a Dutch one, "EN. ĈAMBRO" an Esperanto one.
 static const char *SCENE_PREFIXES_OTHER[] = {
     // it, nl, de
     "INT./EST", "INT/EST", "EST/INT", "EST./INT", "BIN./BUI", "BUI./BIN",
@@ -247,6 +248,10 @@ static bool starts_scene(const int32_t *s, uint32_t n, const char *prefix,
   for (uint32_t i = 0; i < k; i++) {
     if ((any_case ? upper(s[i]) : s[i]) != p[i]) return false;
   }
+  bool latin_word = !any_case;
+  for (uint32_t i = 0; i < k && latin_word; i++)
+    if (p[i] >= 128 || p[i] == '.' || p[i] == '/') latin_word = false;
+  if (latin_word) return s[k] == '.';
   if (s[k] == '.' || s[k] == ' ' || s[k] == '\t') return true;
   if (p[k - 1] == '.') return is_space(s[k]);
   return !is_alnum(p[k - 1]) && p[k - 1] != '.';
@@ -348,7 +353,7 @@ static bool note_only_line(TSLexer *lexer) {
 // and looks at the next one.
 static void read_line(TSLexer *lexer, Line *line) {
   while (!is_eol(lexer)) {
-    if (line->len < LINE_MAX) {
+    if (line->len < LINE_LENGTH) {
       line->text[line->len++] = lexer->lookahead;
     } else {
       line->truncated = true;
@@ -457,7 +462,7 @@ static bool scan_line_start(Scanner *scanner, TSLexer *lexer,
   }
 
   Line *line = ts_calloc(1, sizeof(Line));
-  int32_t *s = ts_malloc(LINE_MAX * sizeof(int32_t));
+  int32_t *s = ts_malloc(LINE_LENGTH * sizeof(int32_t));
   line->raw_bang = ws == 0 && lexer->lookahead == '!';
   line->indented = tab_first || spaces >= 3;
   read_line(lexer, line);
@@ -512,7 +517,7 @@ static bool scan_line_start(Scanner *scanner, TSLexer *lexer,
   } else if (c0 == '.' && c1 != '.' && tn > 1) {
     DECIDE(SCENE_START, '.');
   } else if (c0 == '>') {
-    if (n > 1 && s[n - 1] == '<' && t[tn - 1] == '<') {
+    if (n > 1 && s[n - 1] == '<') { // notes may follow the <
       DECIDE(CENTERED_START, '>');
     } else {
       DECIDE(TRANSITION_START, '>');

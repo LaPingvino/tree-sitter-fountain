@@ -142,3 +142,34 @@ Action.
   (action
     (note))
   (action))
+
+==================
+Notes beside cues and centered text
+==================
+
+BOB ^ [[note]]
+Hi.
+
+> THE END < [[note]]
+
+[[note]] BOB
+Hi.
+
+---
+
+(document
+  (dialogue_block
+    (character
+      (character_name)
+      (dual_dialogue_marker)
+      (note))
+    (dialogue))
+  (centered
+    (force_marker)
+    (centered_end)
+    (note))
+  (dialogue_block
+    (character
+      (note)
+      (character_name))
+    (dialogue)))

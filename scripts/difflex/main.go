@@ -29,12 +29,16 @@ import (
 	"github.com/LaPingvino/lexington/rules"
 )
 
-// scene heading prefixes: Lexington's for all its languages, as the
-// grammar knows them all
+// scene heading prefixes: Lexington's for the languages given (-lang),
+// all of them by default, as the grammar knows them all
+var langs = flag.String("lang", "", "Lexington's scene heading languages, comma separated (en,eo,...); all if empty")
+
 func scenes() []string {
 	var all []string
-	for _, words := range rules.DefaultConf().Scenes {
-		all = append(all, words...)
+	for lang, words := range rules.DefaultConf().Scenes {
+		if *langs == "" || strings.Contains(","+*langs+",", ","+lang+",") {
+			all = append(all, words...)
+		}
 	}
 	return all
 }

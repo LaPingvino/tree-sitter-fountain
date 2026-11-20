@@ -39,7 +39,7 @@ prefixes for other languages (EN., EKST., BIN., ИНТ., ...) in capitals.
 ```sh
 tree-sitter generate && tree-sitter test
 # compare with Lexington, line by line (Lexington checked out next to this repository)
-go -C scripts/difflex run . some.fountain other.fountain
+go -C scripts/difflex run . some.fountain other.fountain   # -lang en: only these scene words
 ```
 
 `scripts/difflex` lists the lines where this grammar and Lexington's parser

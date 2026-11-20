@@ -179,9 +179,12 @@ module.exports = grammar({
         $._character_start,
         optional($._indent),
         optional($.force_marker),
+        repeat(choice($.note, $._whitespace)),
         $.character_name,
         repeat(choice($._inline, $.character_extension)),
-        optional($.dual_dialogue_marker),
+        optional(
+          seq($.dual_dialogue_marker, repeat(choice($.note, $._whitespace))),
+        ),
         $._newline,
       ),
 
@@ -241,6 +244,7 @@ module.exports = grammar({
         $.force_marker,
         repeat($._inline),
         $.centered_end,
+        repeat(choice($.note, $._whitespace)),
         $._newline,
       ),
 

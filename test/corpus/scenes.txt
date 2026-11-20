@@ -105,3 +105,31 @@ Open the door, says the action.
     (scene_heading
       (scene_title))
     (action)))
+
+==================
+Bare foreign words need a dot
+==================
+
+OPEN ON A BLACK SCREEN
+It is dark.
+
+OPEN. PLEIN - DAG
+
+BI (V.O.)
+Hello.
+
+---
+
+(document
+  (dialogue_block
+    (character
+      (character_name))
+    (dialogue))
+  (scene
+    (scene_heading
+      (scene_title))
+    (dialogue_block
+      (character
+        (character_name)
+        (character_extension))
+      (dialogue))))
