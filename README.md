@@ -8,7 +8,51 @@
 <!-- [![crates][crates]](https://crates.io/crates/tree-sitter-fountain) -->
 <!-- [![pypi][pypi]](https://pypi.org/project/tree-sitter-fountain/) -->
 
-A (rudimentary) tree-sitter parser for [.fountain](https://fountain.io/) files.
+A tree-sitter parser for [Fountain](https://fountain.io/syntax) screenplays,
+used by the Zed extension [zed-fountain](https://github.com/LaPingvino/zed-fountain).
+
+Fountain is line based: what a line is depends on its neighbours (a
+character cue needs a blank line before it and text after it). An external
+scanner (`src/scanner.c`) reads each line and the next and marks what the
+line is; `grammar.js` gives the lines their structure:
+
+- `title_page` of `title_field`s (`title_key`, `title_value`s, also on
+  indented lines below the key);
+- `section` (`section_heading`: `section_marker`, `section_title`) holding
+  the sections of a deeper level, scenes and elements up to the next
+  heading of its level or higher;
+- `scene` (`scene_heading`: `scene_title`, `scene_number`) up to the next
+  scene or section heading;
+- `action`, `dialogue_block` (`character` with `character_name`,
+  `character_extension`, `dual_dialogue_marker`; `parenthetical`,
+  `dialogue`, `lyric`), `transition`, `centered`, `lyric`, `synopsis`,
+  `page_break`;
+- inline: `bold`, `italic`, `bold_italic`, `underline`, `escape`, `note`,
+  `boneyard`; `force_marker` for the forcing characters `. @ ! ~ > =`.
+
+Scene headings start with INT, EXT, EST, INT./EXT, INT/EXT, EXT/INT, I/E
+in any case, or with one of [Lexington](https://github.com/LaPingvino/lexington)'s
+prefixes for other languages (EN., EKST., BIN., ИНТ., ...) in capitals.
+
+## Testing
+
+```sh
+tree-sitter generate && tree-sitter test
+# compare with Lexington, line by line (Lexington checked out next to this repository)
+go -C scripts/difflex run . some.fountain other.fountain
+```
+
+`scripts/difflex` lists the lines where this grammar and Lexington's parser
+disagree on the element. Known differences, where this grammar follows the
+Fountain spec and Lexington does not:
+
+- a scene heading needs a blank line before it (Lexington takes any line
+  starting with INT. etc.);
+- so does a character cue (Lexington takes a line in capitals right after
+  action as a cue);
+- a transition is in capitals with blank lines around it (Lexington takes
+  any line ending in "TO:", "cut to:" and "... and DISSOLVE TO:" included);
+- a line of two spaces keeps a speech going (Lexington ends it).
 
 ## Installation
 You're probably already using `nvim-treesitter`. Open the file where you put its configs:
@@ -21,9 +65,9 @@ require'nvim-treesitter.configs'.setup {
 local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 treesitter_parser_config.fountain = {
     install_info = {
-        url = "https://github.com/gboere/tree-sitter-fountain",
-        files = {"src/parser.c"},
-        branch = "master",
+        url = "https://github.com/LaPingvino/tree-sitter-fountain",
+        files = {"src/parser.c", "src/scanner.c"},
+        branch = "main",
     },
     filetype = "fountain",
 }

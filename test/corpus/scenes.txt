@@ -1,0 +1,107 @@
+==================
+Scene heading prefixes
+==================
+
+INT. MR. SMITH'S HOUSE - DAY
+
+int. kitchen - night
+
+EXT./INT. CAR - MOVING
+
+INT/EXT DOOR
+
+I/E PLANE - DAY
+
+EST. CITY - DAWN
+
+---
+
+(document
+  (scene
+    (scene_heading
+      (scene_title)))
+  (scene
+    (scene_heading
+      (scene_title)))
+  (scene
+    (scene_heading
+      (scene_title)))
+  (scene
+    (scene_heading
+      (scene_title)))
+  (scene
+    (scene_heading
+      (scene_title)))
+  (scene
+    (scene_heading
+      (scene_title))))
+
+==================
+Not scene headings
+==================
+
+INTERIOR DESIGN is action.
+
+INT. HOUSE needs a blank line before it:
+INT. NOT A HEADING
+
+...an ellipsis is action.
+
+---
+
+(document
+  (action)
+  (scene
+    (scene_heading
+      (scene_title))
+    (action)
+    (action)))
+
+==================
+Forced scene heading and scene numbers
+==================
+
+.FLASHBACK
+
+INT. HOUSE - DAY #1A#
+
+.MONTAGE #12-B.3# [[note]]
+
+---
+
+(document
+  (scene
+    (scene_heading
+      (force_marker)
+      (scene_title)))
+  (scene
+    (scene_heading
+      (scene_title)
+      (scene_number)))
+  (scene
+    (scene_heading
+      (force_marker)
+      (scene_title)
+      (scene_number)
+      (note))))
+
+==================
+Other languages, in capitals only
+==================
+
+EN. ĈAMBRO - VESPERE
+
+EKST. STRATO - TAGE
+
+Open the door, says the action.
+
+---
+
+(document
+  (scene
+    (scene_heading
+      (scene_title)))
+  (scene
+    (scene_heading
+      (scene_title))
+    (action)))

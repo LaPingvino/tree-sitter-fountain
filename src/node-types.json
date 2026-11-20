@@ -2,15 +2,48 @@
   {
     "type": "action",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "force_marker",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
+          "named": true
+        }
+      ]
+    }
   },
   {
-    "type": "boneyard",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "dialogue",
+    "type": "centered",
     "named": true,
     "fields": {},
     "children": {
@@ -18,7 +51,133 @@
       "required": true,
       "types": [
         {
-          "type": "dialogue_block",
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "centered_end",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "force_marker",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "character",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "character_extension",
+          "named": true
+        },
+        {
+          "type": "character_name",
+          "named": true
+        },
+        {
+          "type": "dual_dialogue_marker",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "force_marker",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dialogue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
           "named": true
         }
       ]
@@ -27,28 +186,25 @@
   {
     "type": "dialogue_block",
     "named": true,
-    "fields": {
-      "character": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "character",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "parenthetical",
+          "type": "character",
           "named": true
         },
         {
-          "type": "speech",
+          "type": "dialogue",
+          "named": true
+        },
+        {
+          "type": "lyric",
+          "named": true
+        },
+        {
+          "type": "parenthetical",
           "named": true
         }
       ]
@@ -68,19 +224,19 @@
           "named": true
         },
         {
-          "type": "boneyard",
+          "type": "centered",
           "named": true
         },
         {
-          "type": "break",
+          "type": "dialogue_block",
           "named": true
         },
         {
-          "type": "dialogue",
+          "type": "lyric",
           "named": true
         },
         {
-          "type": "note",
+          "type": "page_break",
           "named": true
         },
         {
@@ -92,7 +248,7 @@
           "named": true
         },
         {
-          "type": "synopse",
+          "type": "synopsis",
           "named": true
         },
         {
@@ -107,9 +263,86 @@
     }
   },
   {
+    "type": "lyric",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "force_marker",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "parenthetical",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "scene",
@@ -124,11 +357,46 @@
           "named": true
         },
         {
-          "type": "break",
+          "type": "centered",
           "named": true
         },
         {
-          "type": "dialogue",
+          "type": "dialogue_block",
+          "named": true
+        },
+        {
+          "type": "lyric",
+          "named": true
+        },
+        {
+          "type": "page_break",
+          "named": true
+        },
+        {
+          "type": "scene_heading",
+          "named": true
+        },
+        {
+          "type": "synopsis",
+          "named": true
+        },
+        {
+          "type": "transition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scene_heading",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "force_marker",
           "named": true
         },
         {
@@ -136,11 +404,50 @@
           "named": true
         },
         {
-          "type": "synopse",
+          "type": "scene_number",
           "named": true
         },
         {
-          "type": "transition",
+          "type": "scene_title",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scene_title",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
           "named": true
         }
       ]
@@ -151,50 +458,27 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "section1",
-          "named": true
-        },
-        {
-          "type": "section2",
-          "named": true
-        },
-        {
-          "type": "section3",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "section1",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
           "type": "action",
           "named": true
         },
         {
-          "type": "boneyard",
+          "type": "centered",
           "named": true
         },
         {
-          "type": "break",
+          "type": "dialogue_block",
           "named": true
         },
         {
-          "type": "dialogue",
+          "type": "lyric",
           "named": true
         },
         {
-          "type": "note",
+          "type": "page_break",
           "named": true
         },
         {
@@ -202,15 +486,15 @@
           "named": true
         },
         {
-          "type": "section2",
+          "type": "section",
           "named": true
         },
         {
-          "type": "section3",
+          "type": "section_heading",
           "named": true
         },
         {
-          "type": "synopse",
+          "type": "synopsis",
           "named": true
         },
         {
@@ -221,7 +505,26 @@
     }
   },
   {
-    "type": "section2",
+    "type": "section_heading",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "section_marker",
+          "named": true
+        },
+        {
+          "type": "section_title",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "section_title",
     "named": true,
     "fields": {},
     "children": {
@@ -229,7 +532,11 @@
       "required": false,
       "types": [
         {
-          "type": "action",
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
           "named": true
         },
         {
@@ -237,11 +544,11 @@
           "named": true
         },
         {
-          "type": "break",
+          "type": "escape",
           "named": true
         },
         {
-          "type": "dialogue",
+          "type": "italic",
           "named": true
         },
         {
@@ -249,34 +556,26 @@
           "named": true
         },
         {
-          "type": "scene",
-          "named": true
-        },
-        {
-          "type": "section3",
-          "named": true
-        },
-        {
-          "type": "synopse",
-          "named": true
-        },
-        {
-          "type": "transition",
+          "type": "underline",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "section3",
+    "type": "synopsis",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "action",
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
           "named": true
         },
         {
@@ -284,11 +583,15 @@
           "named": true
         },
         {
-          "type": "break",
+          "type": "escape",
           "named": true
         },
         {
-          "type": "dialogue",
+          "type": "force_marker",
+          "named": true
+        },
+        {
+          "type": "italic",
           "named": true
         },
         {
@@ -296,45 +599,170 @@
           "named": true
         },
         {
-          "type": "scene",
-          "named": true
-        },
-        {
-          "type": "synopse",
-          "named": true
-        },
-        {
-          "type": "transition",
+          "type": "underline",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "speech",
+    "type": "title_field",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "title_key",
+          "named": true
+        },
+        {
+          "type": "title_value",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "title_page",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "title_field",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "title_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "transition",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bold",
+          "named": true
+        },
+        {
+          "type": "bold_italic",
+          "named": true
+        },
+        {
+          "type": "boneyard",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "force_marker",
+          "named": true
+        },
+        {
+          "type": "italic",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "underline",
+          "named": true
+        }
+      ]
+    }
   },
   {
-    "type": "\n",
+    "type": ":",
     "named": false
   },
   {
-    "type": "break",
+    "type": "bold",
     "named": true
   },
   {
-    "type": "character",
+    "type": "bold_italic",
+    "named": true
+  },
+  {
+    "type": "boneyard",
+    "named": true
+  },
+  {
+    "type": "centered_end",
+    "named": true
+  },
+  {
+    "type": "character_extension",
+    "named": true
+  },
+  {
+    "type": "character_name",
+    "named": true
+  },
+  {
+    "type": "dual_dialogue_marker",
+    "named": true
+  },
+  {
+    "type": "escape",
+    "named": true
+  },
+  {
+    "type": "force_marker",
+    "named": true
+  },
+  {
+    "type": "italic",
     "named": true
   },
   {
@@ -342,7 +770,23 @@
     "named": true
   },
   {
-    "type": "synopse",
+    "type": "page_break",
+    "named": true
+  },
+  {
+    "type": "scene_number",
+    "named": true
+  },
+  {
+    "type": "section_marker",
+    "named": true
+  },
+  {
+    "type": "title_key",
+    "named": true
+  },
+  {
+    "type": "underline",
     "named": true
   }
 ]

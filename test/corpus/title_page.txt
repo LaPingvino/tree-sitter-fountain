@@ -1,0 +1,53 @@
+==================
+Title page with inline and indented values
+==================
+
+Title: **The Test**
+Credit: Written by
+Author: Joop
+Contact:
+	Somewhere 1
+   Elsewhere 2
+Notes:	
+Draft date: 1/1/2026
+
+FADE IN:
+
+---
+
+(document
+  (title_page
+    (title_field
+      (title_key)
+      (title_value
+        (bold)))
+    (title_field
+      (title_key)
+      (title_value))
+    (title_field
+      (title_key)
+      (title_value))
+    (title_field
+      (title_key)
+      (title_value)
+      (title_value))
+    (title_field
+      (title_key))
+    (title_field
+      (title_key)
+      (title_value)))
+  (action))
+
+==================
+FADE IN: is no title page field
+==================
+
+FADE IN:
+
+Action.
+
+---
+
+(document
+  (action)
+  (action))

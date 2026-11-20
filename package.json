@@ -1,8 +1,8 @@
 {
   "name": "tree-sitter-fountain",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Fountain grammar for tree-sitter",
-  "repository": "github:gboere/tree-sitter-fountain",
+  "repository": "github:LaPingvino/tree-sitter-fountain",
   "author": "gboere",
   "license": "MIT",
   "main": "bindings/node",

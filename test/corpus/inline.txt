@@ -1,0 +1,79 @@
+==================
+Emphasis
+==================
+
+*italic* **bold** ***both*** _underline_ \*escaped\* 5 * 3 * 2
+
+---
+
+(document
+  (action
+    (italic)
+    (bold)
+    (bold_italic)
+    (underline)
+    (escape)
+    (escape)))
+
+==================
+Notes
+==================
+
+[[A note line.]]
+
+Action with [[an inline note]].
+
+[[
+A note
+over lines
+]]
+
+---
+
+(document
+  (action
+    (note))
+  (action
+    (note))
+  (action
+    (note)))
+
+==================
+Boneyard
+==================
+
+Action with /* inline bone */ text.
+
+/* a boneyard
+spanning lines
+
+with a blank */
+
+/* one */ and /* two */
+
+---
+
+(document
+  (action
+    (boneyard))
+  (action
+    (boneyard))
+  (action
+    (boneyard)
+    (boneyard)))
+
+==================
+No newline at the end
+==================
+
+INT. HOUSE - DAY
+
+Last line
+
+---
+
+(document
+  (scene
+    (scene_heading
+      (scene_title))
+    (action)))

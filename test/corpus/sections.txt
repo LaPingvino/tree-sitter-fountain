@@ -1,0 +1,85 @@
+==================
+Sections nest by level
+==================
+
+# Act One
+
+= The act where it begins.
+
+## Sequence A
+
+INT. HOUSE - DAY
+
+Action.
+
+### Beat
+
+#### Deeper
+
+## Sequence B
+
+# Act Two
+
+EXT. PARK - NIGHT
+
+---
+
+(document
+  (section
+    (section_heading
+      (section_marker)
+      (section_title))
+    (synopsis
+      (force_marker))
+    (section
+      (section_heading
+        (section_marker)
+        (section_title))
+      (scene
+        (scene_heading
+          (scene_title))
+        (action))
+      (section
+        (section_heading
+          (section_marker)
+          (section_title))
+        (section
+          (section_heading
+            (section_marker)
+            (section_title)))))
+    (section
+      (section_heading
+        (section_marker)
+        (section_title))))
+  (section
+    (section_heading
+      (section_marker)
+      (section_title))
+    (scene
+      (scene_heading
+        (scene_title)))))
+
+==================
+A section without a higher one
+==================
+
+## Sequence
+
+INT. HOUSE - DAY
+
+# Act
+
+---
+
+(document
+  (section
+    (section_heading
+      (section_marker)
+      (section_title))
+    (scene
+      (scene_heading
+        (scene_title))))
+  (section
+    (section_heading
+      (section_marker)
+      (section_title))))

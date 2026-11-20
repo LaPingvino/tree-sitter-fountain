@@ -1,0 +1,144 @@
+==================
+Character cues
+==================
+
+JOHN (V.O.) (CONT'D)
+(quietly)
+Hello.
+
+@McCLANE
+Yippee.
+
+R2D2
+Beep.
+
+  INDENTED
+Text.
+
+---
+
+(document
+  (dialogue_block
+    (character
+      (character_name)
+      (character_extension)
+      (character_extension))
+    (parenthetical)
+    (dialogue))
+  (dialogue_block
+    (character
+      (force_marker)
+      (character_name))
+    (dialogue))
+  (dialogue_block
+    (character
+      (character_name))
+    (dialogue))
+  (dialogue_block
+    (character
+      (character_name))
+    (dialogue)))
+
+==================
+Dual dialogue
+==================
+
+BRICK
+Hi.
+
+STEEL ^
+Hello.
+
+---
+
+(document
+  (dialogue_block
+    (character
+      (character_name))
+    (dialogue))
+  (dialogue_block
+    (character
+      (character_name)
+      (dual_dialogue_marker))
+    (dialogue)))
+
+==================
+Not character cues
+==================
+
+23
+is action.
+
+THE END.
+
+Action line
+BOB
+is action too.
+
+---
+
+(document
+  (action)
+  (action)
+  (action))
+
+==================
+Two spaces keep the speech going
+==================
+
+JOHN
+One.
+  
+Two.
+
+Action.
+
+---
+
+(document
+  (dialogue_block
+    (character
+      (character_name))
+    (dialogue)
+    (dialogue)
+    (dialogue))
+  (action))
+
+==================
+Lyrics in and out of dialogue
+==================
+
+MARY
+~Singing a song
+~La la
+
+~A lyric on its own.
+
+---
+
+(document
+  (dialogue_block
+    (character
+      (character_name))
+    (lyric
+      (force_marker))
+    (lyric
+      (force_marker)))
+  (lyric
+    (force_marker)))
+
+==================
+A cue with a note under it before a blank line is action
+==================
+
+THE FAIR AT DAWN
+[[scenejo: foiro]]
+
+Action.
+
+---
+
+(document
+  (action
+    (note))
+  (action))

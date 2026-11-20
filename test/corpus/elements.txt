@@ -1,0 +1,58 @@
+==================
+Transitions
+==================
+
+Action.
+
+CUT TO:
+
+> FADE TO BLACK.
+
+Mixed case and DISSOLVE TO:
+
+---
+
+(document
+  (action)
+  (transition)
+  (transition
+    (force_marker))
+  (action))
+
+==================
+Centered text
+==================
+
+> THE END <
+
+>A < B<
+
+---
+
+(document
+  (centered
+    (force_marker)
+    (centered_end))
+  (centered
+    (force_marker)
+    (centered_end)))
+
+==================
+Forced action, page break, synopsis
+==================
+
+!SHOUTING ACTION
+Action continues.
+
+===
+
+= A synopsis.
+
+---
+
+(document
+  (action
+    (force_marker))
+  (page_break)
+  (synopsis
+    (force_marker)))

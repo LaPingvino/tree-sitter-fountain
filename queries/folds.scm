@@ -1,9 +1,7 @@
 [
- (section)
- (scene)
- (dialogue)
- (dialogue_block)
- (boneyard)
- (action)
-]@fold
-
+  (section)
+  (scene)
+  (dialogue_block)
+  (title_page)
+  (boneyard)
+] @fold
