@@ -43,16 +43,15 @@ go -C scripts/difflex run . some.fountain other.fountain   # -lang en: only thes
 ```
 
 `scripts/difflex` lists the lines where this grammar and Lexington's parser
-disagree on the element. Known differences, where this grammar follows the
-Fountain spec and Lexington does not:
-
-- a scene heading needs a blank line before it (Lexington takes any line
-  starting with INT. etc.);
-- so does a character cue (Lexington takes a line in capitals right after
-  action as a cue);
-- a transition is in capitals with blank lines around it (Lexington takes
-  any line ending in "TO:", "cut to:" and "... and DISSOLVE TO:" included);
-- a line of two spaces keeps a speech going (Lexington ends it).
+disagree on the element. Since Lexington v1.19.0 both follow the Fountain spec
+on blank lines before scene headings and character cues, transitions with
+blank lines around them, and a line of two spaces keeping a speech going;
+Lexington's old, looser reading is still there as `-loose` (and `-keeploose`
+rewrites a script so it reads the same under the spec). One difference is left,
+by this grammar's own rule: a scene heading word borrowed from another language
+starts a heading only with a dot after it (`OPEN ON…`, `BI (V.O.)` stay what
+they are), while Lexington, given every language's words at once, takes them
+as headings. With one language's words (`-lang en`) they agree.
 
 ## Installation
 You're probably already using `nvim-treesitter`. Open the file where you put its configs:
